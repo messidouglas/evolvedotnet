@@ -26,10 +26,11 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class IGenome : IComparable<IGenome>
+    interface IGenome : IComparable<IGenome>
     {
+        int Length { get; }
+        bool this[int locus] { get; set; }
+        int CompareTo(IGenome other);
         double Evaluate();
-        public int Length { get; }
-        public bool this[int locus] { get; set; }
     }
 }

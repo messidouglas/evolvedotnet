@@ -5,14 +5,12 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class FlipGeneMutation : IMutation
+    class FlipGeneMutation : IMutationMethod
     {
-        IGenome Mutate(IGenome genome)
+        public void Mutate(IGenome genome)
         {
             for (int locus = 0; locus < genome.Length; locus++)
                 genome[locus] = !genome[locus];
-
-            return genome;
         }
     }
 }

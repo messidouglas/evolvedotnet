@@ -26,22 +26,44 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class GeneToGeneMutation : IMutationMethod
+    class UniformCrossover : ICrossoverMethod
     {
-        public double RatePerBit { get; set; }
+        private double ratePerGene;
 
-        public GeneToGeneMutation(double ratePerBit)
+        public UniformCrossover()
         {
-            this.RatePerBit = ratePerBit;
+            this.ratePerGene = 0.5;
         }
 
-        public void Mutate(IGenome genome)
+        public UniformCrossover(double ratePerGene)
         {
-            for(int locus = 0; locus < genome.Length; locus++)
-            {                
-                if (Helper.Random.NextDouble() < RatePerBit)
-                    genome[locus] = !genome[locus];
+            this.ratePerGene = ratePerGene;
+        }
+        
+        public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)
+        {
+            IList<bool> offspring1 = new List<bool>();
+            IList<bool> offspring2 = new List<bool>();
+
+            for (int i = 0; i < genome1.Length; i++)
+            {
+                if (Helper.Random.Next() < ratePerGene)
+                {
+                    offspring1.Add(genome1[i]);
+                    offspring2.Add(genome2[i]);
+                }
+                else
+                {
+                    offspring1.Add(genome2[i]);
+                    offspring2.Add(genome1[i]);
+                }
             }
+
+            IList<IGenome> genomes = new List<IGenome>();
+            genomes.Add(new BinaryGenome(offspring1));
+            genomes.Add(new BinaryGenome(offspring2));
+            return genomes;
         }
     }
 }
+

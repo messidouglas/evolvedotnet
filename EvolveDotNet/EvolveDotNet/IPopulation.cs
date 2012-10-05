@@ -26,22 +26,10 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class GeneToGeneMutation : IMutationMethod
+    interface IPopulation
     {
-        public double RatePerBit { get; set; }
-
-        public GeneToGeneMutation(double ratePerBit)
-        {
-            this.RatePerBit = ratePerBit;
-        }
-
-        public void Mutate(IGenome genome)
-        {
-            for(int locus = 0; locus < genome.Length; locus++)
-            {                
-                if (Helper.Random.NextDouble() < RatePerBit)
-                    genome[locus] = !genome[locus];
-            }
-        }
+        void NextGeneration();
+        void Mutation(IMutationMethod mutationMethod);
+        List<IGenome> Crossover(IGenome genome1, IGenome genome2);
     }
 }
