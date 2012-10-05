@@ -29,6 +29,7 @@ namespace EvolveDotNet
     class BinaryGenome : IGenome
     {
         private IList<bool> genes;
+        private int p;
 
         public BinaryGenome(IList<bool> genes)
         {
@@ -43,7 +44,7 @@ namespace EvolveDotNet
                 genes.Add(Helper.Random.Next(2) == 0 ? false : true);
             }
         }
-
+        
         public bool this[int locus]
         {
             get { return genes[locus]; }
@@ -95,7 +96,7 @@ namespace EvolveDotNet
             return output.ToString();
         }
 
-        public int CompareTo(BinaryGenome other)
+        public int CompareTo(IGenome other)
         {
             //if this is the smaller genome 
             if (Evaluate() < other.Evaluate())
@@ -109,7 +110,10 @@ namespace EvolveDotNet
             else
                 return 0;
         }
-
-        public abstract double Evaluate();
+        
+        public double Evaluate()
+        {
+            return 0.0;
+        }
     }
 }

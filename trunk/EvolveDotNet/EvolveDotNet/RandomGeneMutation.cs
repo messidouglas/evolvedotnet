@@ -5,17 +5,27 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class RandomGeneMutation : IMutation
+    class RandomGeneMutation : IMutationMethod
     {
-        IGenome Mutate(IGenome genome)
+        public double RatePerBit { get; set; }
+
+        public RandomGeneMutation()
         {
-            if (Helper.Random.NextDouble() < rate)
+            this.RatePerBit = 0.1;
+        }
+
+        public RandomGeneMutation(double ratePerBit)
+        {
+            this.RatePerBit = ratePerBit;
+        }
+
+        public void Mutate(IGenome genome)
+        {
+            if (Helper.Random.NextDouble() < RatePerBit)
             {
                 int locus = Helper.Random.Next(genome.Length);
                 genome[locus] = !genome[locus];
             }
-
-            return genome;
         }
     }
 }
