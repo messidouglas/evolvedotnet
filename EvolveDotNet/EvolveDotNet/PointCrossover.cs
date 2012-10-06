@@ -26,11 +26,11 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class MultipleCutoffsCrossover : ICrossoverMethod
+    class PointCrossover : ICrossoverMethod
     {
         private int[] positions;
 
-        public MultipleCutoffsCrossover(params int[] positions)
+        public PointCrossover(params int[] positions)
         {
             if (positions.Length != 0)
             {
@@ -47,10 +47,9 @@ namespace EvolveDotNet
             int contParams = 0;
             int atual = positions[contParams];
 
-
-            for (int i = 0; i < genome1.Length; i++)
+            for (int locus = 0; locus < genome1.Length; locus++)
             {
-                if (positions[contParams] == i)
+                if (positions[contParams] == locus)
                 {
                     aux = !aux;
                     contParams++;
@@ -58,13 +57,13 @@ namespace EvolveDotNet
 
                 if (aux)
                 {
-                    offspring1.Add(genome1[i]);
-                    offspring2.Add(genome2[i]);
+                    offspring1.Add(genome1[locus]);
+                    offspring2.Add(genome2[locus]);
                 }
                 else
                 {
-                    offspring1.Add(genome2[i]);
-                    offspring2.Add(genome1[i]);
+                    offspring1.Add(genome2[locus]);
+                    offspring2.Add(genome1[locus]);
                 }
             }
 

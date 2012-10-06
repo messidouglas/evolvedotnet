@@ -5,16 +5,16 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class RandomGeneMutation : IMutationMethod
+    class RandomMutation : IMutationMethod
     {
         public double RatePerBit { get; set; }
 
-        public RandomGeneMutation()
+        public RandomMutation()
         {
             this.RatePerBit = 0.1;
         }
 
-        public RandomGeneMutation(double ratePerBit)
+        public RandomMutation(double ratePerBit)
         {
             this.RatePerBit = ratePerBit;
         }

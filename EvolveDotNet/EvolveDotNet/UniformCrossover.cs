@@ -29,10 +29,11 @@ namespace EvolveDotNet
     class UniformCrossover : ICrossoverMethod
     {
         private double ratePerGene;
+        private const double RATE_PER_GENE_DEFAULT = 0.5;
 
         public UniformCrossover()
         {
-            this.ratePerGene = 0.5;
+            this.ratePerGene = RATE_PER_GENE_DEFAULT;
         }
 
         public UniformCrossover(double ratePerGene)
@@ -45,17 +46,17 @@ namespace EvolveDotNet
             IList<bool> offspring1 = new List<bool>();
             IList<bool> offspring2 = new List<bool>();
 
-            for (int i = 0; i < genome1.Length; i++)
+            for (int locus = 0; locus < genome1.Length; locus++)
             {
                 if (Helper.Random.Next() < ratePerGene)
                 {
-                    offspring1.Add(genome1[i]);
-                    offspring2.Add(genome2[i]);
+                    offspring1.Add(genome1[locus]);
+                    offspring2.Add(genome2[locus]);
                 }
                 else
                 {
-                    offspring1.Add(genome2[i]);
-                    offspring2.Add(genome1[i]);
+                    offspring1.Add(genome2[locus]);
+                    offspring2.Add(genome1[locus]);
                 }
             }
 

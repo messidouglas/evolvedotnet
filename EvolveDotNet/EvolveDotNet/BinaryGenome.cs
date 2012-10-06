@@ -110,10 +110,7 @@ namespace EvolveDotNet
             else
                 return 0;
         }
-        
-        public double Evaluate()
-        {
-            return 0.0;
-        }
+
+        public double Evaluate();
     }
 }
