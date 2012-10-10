@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    interface IGenome : IComparable<IGenome>
+    public interface IGenome : IComparable<IGenome>
     {
         int Length { get; }
         bool this[int locus] { get; set; }

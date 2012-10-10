@@ -26,10 +26,9 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class TournamentSelection : ISelectionFunction
+    public class TournamentSelection : ISelectionFunction
     {
-
-        public IList<IGenome> Select(IPopulation population)
+        IGenome ISelectionFunction.Select(IPopulation population)
         {
             throw new NotImplementedException();
         }

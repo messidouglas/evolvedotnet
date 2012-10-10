@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class FlipGeneMutation : IMutationMethod
+    public class FlipGeneMutation : IMutationMethod
     {
         public void Mutate(IGenome genome)
         {

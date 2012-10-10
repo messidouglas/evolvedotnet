@@ -26,8 +26,8 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    interface ISelectionFunction
+    public interface ISelectionFunction
     {
-        IList<IGenome> Select(IPopulation population);
+        IGenome Select(IPopulation population);
     }
 }

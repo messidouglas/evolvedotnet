@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    interface ICrossoverMethod
+    public interface ICrossoverMethod
     {
         IList<IGenome> Crossover(IGenome genome1, IGenome genome2);
     }

@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class PointCrossover : ICrossoverMethod
+    public class PointCrossover : ICrossoverMethod
     {
         private int[] positions;
 

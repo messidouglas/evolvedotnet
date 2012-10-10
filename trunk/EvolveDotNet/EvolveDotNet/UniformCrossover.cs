@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class UniformCrossover : ICrossoverMethod
+    public class UniformCrossover : ICrossoverMethod
     {
         private double ratePerGene;
         private const double RATE_PER_GENE_DEFAULT = 0.5;

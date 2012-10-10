@@ -49,6 +49,7 @@
     <Compile Include="IPopulation.cs" />
     <Compile Include="ISelectionFunction.cs" />
     <Compile Include="PointCrossover.cs" />
+    <Compile Include="Population.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeneToGeneMutation.cs" />
     <Compile Include="RandomMutation.cs" />
