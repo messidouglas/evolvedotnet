@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    interface IMutationMethod
+    public interface IMutationMethod
     {
         void Mutate(IGenome genome);
     }

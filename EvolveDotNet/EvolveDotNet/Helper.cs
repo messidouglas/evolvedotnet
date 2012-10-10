@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    static class Helper
+    public static class Helper
     {
         public static Random Random = new Random();
     }

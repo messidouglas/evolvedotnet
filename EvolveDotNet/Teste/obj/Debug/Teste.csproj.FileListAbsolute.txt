@@ -1,7 +1,0 @@
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\bin\Debug\Teste.dll
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\bin\Debug\Teste.pdb
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\bin\Debug\EvolveDotNet.dll
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\bin\Debug\EvolveDotNet.pdb
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\obj\Debug\Teste.dll
-C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Teste\obj\Debug\Teste.pdb

@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class GeneToGeneMutation : IMutationMethod
+    public class GeneToGeneMutation : IMutationMethod
     {
         public double RatePerBit { get; set; }
 

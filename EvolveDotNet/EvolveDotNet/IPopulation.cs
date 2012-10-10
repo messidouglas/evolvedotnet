@@ -26,10 +26,12 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    interface IPopulation
+    public interface IPopulation
     {
+        IGenome this[int genome] { get; set; }
         void NextGeneration();
         void Mutation(IMutationMethod mutationMethod);
-        List<IGenome> Crossover(IGenome genome1, IGenome genome2);
+        IList<IGenome> Crossover(IGenome genome1, IGenome genome2);     
+        
     }
 }

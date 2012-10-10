@@ -26,7 +26,7 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class BinaryGenome : IGenome
+    public class BinaryGenome : IGenome
     {
         private IList<bool> genes;
         private int p;
@@ -111,6 +111,9 @@ namespace EvolveDotNet
                 return 0;
         }
 
-        public double Evaluate();
+        public double Evaluate()
+        {
+            return 0.0;
+        }
     }
 }
