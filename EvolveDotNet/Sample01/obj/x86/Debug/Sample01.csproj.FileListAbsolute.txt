@@ -1,0 +1,7 @@
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\bin\Debug\Sample01.exe
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\bin\Debug\Sample01.pdb
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\bin\Debug\EvolveDotNet.dll
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\bin\Debug\EvolveDotNet.pdb
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\obj\x86\Debug\Sample01.exe
+C:\Users\Patricia\Desktop\IC-AG\EvolveDotNet\Sample01\obj\x86\Debug\Sample01.pdb
