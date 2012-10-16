@@ -28,9 +28,18 @@ namespace EvolveDotNet
 {
     public class TournamentSelection : ISelectionFunction
     {
-        IGenome ISelectionFunction.Select(IPopulation population)
+        public IGenome Select(IPopulation population)
         {
-            throw new NotImplementedException();
+            int genome1 = Helper.Random.Next(0, population.Length);
+            int genome2 = Helper.Random.Next(0, population.Length);
+            int resul = population[genome1].CompareTo(population[genome2]);
+
+            if (resul < 0)
+                return population[genome2];
+            else if (resul > 0)
+                return population[genome1];
+            else
+                return population[genome1];
         }
     }
 }
