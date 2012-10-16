@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeneToGeneMutation.cs" />
     <Compile Include="RandomMutation.cs" />
+    <Compile Include="RouletteWheelSelection.cs" />
     <Compile Include="TournamentSelection.cs" />
     <Compile Include="UniformCrossover.cs" />
   </ItemGroup>

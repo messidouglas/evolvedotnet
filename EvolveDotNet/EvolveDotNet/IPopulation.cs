@@ -31,7 +31,8 @@ namespace EvolveDotNet
         IGenome this[int genome] { get; set; }
         void NextGeneration();
         void Mutation(IMutationMethod mutationMethod);
-        IList<IGenome> Crossover(IGenome genome1, IGenome genome2);     
+        IList<IGenome> Crossover(IGenome genome1, IGenome genome2);
+        int Length { get; }
         
     }
 }

@@ -87,5 +87,10 @@ namespace EvolveDotNet
         {
             throw new NotImplementedException();
         }
+
+        public int Length
+        {
+            get { return this.population.Count; }
+        }
     }
 }
