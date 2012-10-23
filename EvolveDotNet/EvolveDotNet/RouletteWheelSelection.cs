@@ -9,8 +9,6 @@ namespace EvolveDotNet
     {
         public IGenome Select(IPopulation population)
         {
-            // Avaliar população e ordenar o vetor
-
             IGenome choiced;
             double tournament = Helper.Random.NextDouble();
             double aux = 0;
@@ -22,9 +20,9 @@ namespace EvolveDotNet
             for (int i = 0; i < population.Length; i++)
             {
                 aux += population[i].Evaluate() / sum;
-                if (!(tournament < aux))
+                if (tournament <= aux)
                 {
-                    choiced = population[i - 1];
+                    choiced = population[i];
                     return choiced;
                 }
             }

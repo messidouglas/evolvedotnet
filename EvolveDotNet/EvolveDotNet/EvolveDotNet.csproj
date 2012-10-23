@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryGenome.cs" />
+    <Compile Include="DefaultParameter.cs" />
     <Compile Include="FlipGeneMutation.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ICrossoverMethod.cs" />

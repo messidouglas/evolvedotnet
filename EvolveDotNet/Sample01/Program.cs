@@ -10,17 +10,13 @@ namespace Sample01
     {
         static void Main(string[] args)
         {
-            List<IGenome> genomes = new List<IGenome>();
-            for (int i = 0; i < 100; i++)
-            {
-                genomes.Add(new BinaryGenome(20));
-            }
+            IGenome genome;
+            
 
-
-            for (int i = 0; i < 100; i++)
-            {
-                Console.WriteLine(genomes[i].ToString());
-            }
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    Console.WriteLine(genomes[i].ToString());
+            //}
  
         }
     }
