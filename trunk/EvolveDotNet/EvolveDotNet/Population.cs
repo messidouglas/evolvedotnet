@@ -31,7 +31,7 @@ namespace EvolveDotNet
         private IList<IGenome> population;
         private ISelectionFunction selection;
         private ICrossoverMethod crossover;
-        private IMutationMethod mutationType;
+        private IMutationMethod mutation;
         
         public IGenome this[int genome]
         {
@@ -53,39 +53,48 @@ namespace EvolveDotNet
 
         public IMutationMethod MutationType
         {
-            get { return this.mutationType; }
-            set { this.mutationType = value; }
+            get { return this.mutation; }
+            set { this.mutation = value; }
         }
         
-        public Population(ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation)
+        public Population(ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, int size)
         {
             this.selection = selection;
             this.crossover = crossover;
-            this.mutationType = mutation;            
-            NextGeneration();
+            this.mutation = mutation;
+
+            for (int i = 0; i < size; i++)
+                this.population.Add(new BinaryGenome(DefaultParameter.genomeSize));
         }
 
         public Population(ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, List<IGenome> population)
         {            
             this.selection = selection;
             this.crossover = crossover;
-            this.mutationType = mutation;
+            this.mutation = mutation;
             this.population = population;
         }
 
         public void NextGeneration()
         {
-            throw new NotImplementedException();
+            IList<IGenome> newGeneration = new List<IGenome>();
+            IList<IGenome> aux;
+
+            for (int i = 0; i < this.Length; i+=2)
+            {
+                aux = this.Crossover(this.selection.Select(this), this.selection.Select(this));
+                mutation.Mutate(aux[0]);
+                mutation.Mutate(aux[1]);
+                newGeneration.Add(aux[0]);
+                newGeneration.Add(aux[1]);
+            }
+
+            this.population = newGeneration;
         }
         
         public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)
         {
             return crossover.Crossover(genome1, genome2);
-        }
-
-        public void Mutation(IMutationMethod mutationMethod)
-        {
-            throw new NotImplementedException();
         }
 
         public int Length
