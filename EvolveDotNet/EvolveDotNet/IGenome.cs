@@ -32,5 +32,6 @@ namespace EvolveDotNet
         bool this[int locus] { get; set; }
         int CompareTo(IGenome other);
         double Evaluate();
+        void SetFitnessFunction(IFitnessFunction fitnessFunction);
     }
 }
