@@ -30,6 +30,8 @@ namespace EvolveDotNet
     {
         private IList<bool> genes;
         private int p;
+        private IFitnessFunction fitnessFunction;
+
 
         public BinaryGenome(IList<bool> genes)
         {
@@ -113,7 +115,12 @@ namespace EvolveDotNet
 
         public double Evaluate()
         {
-            return 0.0;
+            return fitnessFunction.Evaluate(this);
+        }
+
+        public void SetFitnessFunction(IFitnessFunction fitnessFunction)
+        {
+            this.fitnessFunction = fitnessFunction;
         }
     }
 }

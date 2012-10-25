@@ -32,6 +32,13 @@ namespace EvolveDotNet
         private ISelectionFunction selection;
         private ICrossoverMethod crossover;
         private IMutationMethod mutation;
+        private IFitnessFunction fitnessFunction;
+
+        public IFitnessFunction FitnessFunction
+        {
+            get { return fitnessFunction; }
+            set { fitnessFunction = value; }
+        }
         
         public IGenome this[int genome]
         {
@@ -56,18 +63,23 @@ namespace EvolveDotNet
             get { return this.mutation; }
             set { this.mutation = value; }
         }
-        
-        public Population(ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, int size)
+
+        public Population(IFitnessFunction fitnessFunction, ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, int size)
         {
             this.selection = selection;
             this.crossover = crossover;
             this.mutation = mutation;
 
+            this.population = new List<IGenome>();
             for (int i = 0; i < size; i++)
+            {
                 this.population.Add(new BinaryGenome(DefaultParameter.genomeSize));
+                this.population[i].SetFitnessFunction(fitnessFunction);
+            }
+            this.fitnessFunction = fitnessFunction;
         }
 
-        public Population(ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, List<IGenome> population)
+        public Population(IFitnessFunction fitnessFunction, ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, List<IGenome> population)
         {            
             this.selection = selection;
             this.crossover = crossover;
@@ -79,17 +91,27 @@ namespace EvolveDotNet
         {
             IList<IGenome> newGeneration = new List<IGenome>();
             IList<IGenome> aux;
-
-            for (int i = 0; i < this.Length; i+=2)
+            int count = 0;
+            do
             {
                 aux = this.Crossover(this.selection.Select(this), this.selection.Select(this));
                 mutation.Mutate(aux[0]);
                 mutation.Mutate(aux[1]);
                 newGeneration.Add(aux[0]);
                 newGeneration.Add(aux[1]);
+                count += 2;
+            } while (count < this.Length);
+
+            if (newGeneration.Count > this.Length)
+            {
+                newGeneration.RemoveAt(this.Length);
             }
 
             this.population = newGeneration;
+            for (int i = 0; i < this.Length; i++)
+            {
+                this.population[i].SetFitnessFunction(fitnessFunction);
+            }
         }
         
         public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)

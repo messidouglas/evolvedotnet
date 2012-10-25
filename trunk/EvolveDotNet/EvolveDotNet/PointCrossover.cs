@@ -28,21 +28,45 @@ namespace EvolveDotNet
 {
     public class PointCrossover : ICrossoverMethod
     {
-        private int[] positions;
+        private List<int> positions;
 
         public PointCrossover(params int[] positions)
         {
-            if (positions.Length != 0)
+            this.positions = new List<int>();
+            this.positions.Add(0);
+            for (int i = 0; i < positions.Length; i++)
             {
-                this.positions = positions;
-                //é necessário ordenar o vetor
+                this.positions.Add(positions[i]);
             }
+            this.positions.Sort();
         }
 
         public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)
         {
+            this.positions.Add(genome1.Length);
             IList<bool> offspring1 = new List<bool>();
             IList<bool> offspring2 = new List<bool>();
+            int contParams = 0;
+            bool aux = true;
+            while (contParams < positions.Count - 1)
+            {
+                for (int locus = positions[contParams]; locus < positions[contParams + 1]; locus++)
+                {
+                    if (aux)
+                    {
+                        offspring1.Add(genome1[locus]);
+                        offspring2.Add(genome2[locus]);
+                    }
+                    else
+                    {
+                        offspring1.Add(genome2[locus]);
+                        offspring2.Add(genome1[locus]);
+                    }
+                }
+                aux = !aux;
+                contParams++;
+            }
+            /*
             bool aux = true;
             int contParams = 0;
             int atual = positions[contParams];
@@ -66,7 +90,7 @@ namespace EvolveDotNet
                     offspring2.Add(genome1[locus]);
                 }
             }
-
+            */
             IList<IGenome> genomes = new List<IGenome>();
             genomes.Add(new BinaryGenome(offspring1));
             genomes.Add(new BinaryGenome(offspring2));

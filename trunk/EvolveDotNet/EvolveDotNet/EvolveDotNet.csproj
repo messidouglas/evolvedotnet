@@ -45,6 +45,7 @@
     <Compile Include="FlipGeneMutation.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ICrossoverMethod.cs" />
+    <Compile Include="IFitnessFunction.cs" />
     <Compile Include="IGenome.cs" />
     <Compile Include="IMutationMethod.cs" />
     <Compile Include="IPopulation.cs" />
