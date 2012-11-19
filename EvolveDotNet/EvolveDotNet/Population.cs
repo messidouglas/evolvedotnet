@@ -33,6 +33,9 @@ namespace EvolveDotNet
         private ICrossoverMethod crossover;
         private IMutationMethod mutation;
         private IFitnessFunction fitnessFunction;
+        private int generation;
+        //private GenerationLog log = GenerationLog.Instance;
+        private double avarageFitness;
 
         public IFitnessFunction FitnessFunction
         {
@@ -64,23 +67,42 @@ namespace EvolveDotNet
             set { this.mutation = value; }
         }
 
+        public int Generation
+        {
+            get { return this.generation; }
+            set { this.generation = value; }
+        }
+        
+        public double AvarageFitness
+        {
+            get { return this.avarageFitness; }
+            set { this.avarageFitness = value; }
+        }
+
         public Population(IFitnessFunction fitnessFunction, ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, int size)
         {
+//            Log.Create("../../Logs/");
             this.selection = selection;
             this.crossover = crossover;
             this.mutation = mutation;
+            this.generation = 1;
+            this.avarageFitness = 0;
 
             this.population = new List<IGenome>();
             for (int i = 0; i < size; i++)
             {
                 this.population.Add(new BinaryGenome(DefaultParameter.genomeSize));
                 this.population[i].SetFitnessFunction(fitnessFunction);
+                this.avarageFitness += this.population[i].Evaluate();
             }
             this.fitnessFunction = fitnessFunction;
+            this.avarageFitness = this.avarageFitness / this.Length;
+            //Log.setPopulationLog(this, generation, this.avarageFitness);
         }
 
         public Population(IFitnessFunction fitnessFunction, ISelectionFunction selection, ICrossoverMethod crossover, IMutationMethod mutation, List<IGenome> population)
-        {            
+        {
+            //Log.Create("../../Logs/");
             this.selection = selection;
             this.crossover = crossover;
             this.mutation = mutation;
@@ -91,7 +113,10 @@ namespace EvolveDotNet
         {
             IList<IGenome> newGeneration = new List<IGenome>();
             IList<IGenome> aux;
+            this.generation++;
             int count = 0;
+            double avarageFitness = 0;
+
             do
             {
                 aux = this.Crossover(this.selection.Select(this), this.selection.Select(this));
@@ -106,12 +131,17 @@ namespace EvolveDotNet
             {
                 newGeneration.RemoveAt(this.Length);
             }
-
-            this.population = newGeneration;
+                        
             for (int i = 0; i < this.Length; i++)
             {
-                this.population[i].SetFitnessFunction(fitnessFunction);
+                newGeneration[i].SetFitnessFunction(fitnessFunction);
+                avarageFitness += newGeneration[i].Evaluate();
             }
+            AvarageFitness = avarageFitness / this.Length;
+            
+            this.population = newGeneration;
+
+            //Log.setPopulationLog(this, this.generation, AvarageFitness);
         }
         
         public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)

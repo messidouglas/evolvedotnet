@@ -43,6 +43,7 @@
     <Compile Include="BinaryGenome.cs" />
     <Compile Include="DefaultParameter.cs" />
     <Compile Include="FlipGeneMutation.cs" />
+    <Compile Include="GenerationLog.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ICrossoverMethod.cs" />
     <Compile Include="IFitnessFunction.cs" />
@@ -53,7 +54,7 @@
     <Compile Include="PointCrossover.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GeneToGeneMutation.cs" />
+    <Compile Include="UniformMutation.cs" />
     <Compile Include="RandomMutation.cs" />
     <Compile Include="RouletteWheelSelection.cs" />
     <Compile Include="TournamentSelection.cs" />

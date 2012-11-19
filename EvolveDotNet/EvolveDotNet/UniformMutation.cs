@@ -26,11 +26,11 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    public class GeneToGeneMutation : IMutationMethod
+    public class UniformMutation : IMutationMethod
     {
         public double RatePerBit { get; set; }
 
-        public GeneToGeneMutation(double ratePerBit)
+        public UniformMutation(double ratePerBit)
         {
             this.RatePerBit = ratePerBit;
         }
