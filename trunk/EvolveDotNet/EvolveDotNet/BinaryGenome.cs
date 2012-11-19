@@ -29,9 +29,7 @@ namespace EvolveDotNet
     public class BinaryGenome : IGenome
     {
         private IList<bool> genes;
-        private int p;
         private IFitnessFunction fitnessFunction;
-
 
         public BinaryGenome(IList<bool> genes)
         {
