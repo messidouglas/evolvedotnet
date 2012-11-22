@@ -41,12 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Population\BinaryGenome.cs" />
+    <Compile Include="Population\ComplementaryGeneration.cs" />
+    <Compile Include="Population\RandomGeneration.cs" />
     <Compile Include="Util\DefaultParameter.cs" />
     <Compile Include="Mutation\FlipGeneMutation.cs" />
     <Compile Include="Util\GenerationLog.cs" />
     <Compile Include="Util\Helper.cs" />
     <Compile Include="Crossover\ICrossoverMethod.cs" />
-    <Compile Include="Population\IFisrtPopulationMethod.cs" />
+    <Compile Include="Population\IInitialPopulationMethod.cs" />
     <Compile Include="Population\IFitnessFunction.cs" />
     <Compile Include="Population\IGenome.cs" />
     <Compile Include="Mutation\IMutationMethod.cs" />

@@ -26,12 +26,19 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    public interface IGenome : IComparable<IGenome>, ICloneable
+    public class RandomGeneration : IInitialPopulationMethod
     {
-        int Length { get; }
-        bool this[int locus] { get; set; }
-        int CompareTo(IGenome other);
-        double Evaluate();
-        void SetFitnessFunction(IFitnessFunction fitnessFunction);
+        public List<IGenome> Generate(int size, IFitnessFunction fitnessFunction)
+        {
+            List<IGenome> population = new List<IGenome>();
+
+            for (int i = 0; i < size; i++)
+            {
+                population.Add(new BinaryGenome(DefaultParameter.genomeSize));
+                population[i].SetFitnessFunction(fitnessFunction);
+            }
+
+            return population;
+        }
     }
 }

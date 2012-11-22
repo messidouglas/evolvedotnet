@@ -17,14 +17,11 @@ namespace Sample01
             // crossover
             // run
 
-            ISelectionFunction sFunc = new TournamentSelection();
-            IMutationMethod mut = new RandomMutation(0.05);
-            ICrossoverMethod cross = new PointCrossover(1,3);
             DefaultParameter.genomeSize = 10;
             IFitnessFunction fFunc = new FitnessFunction();
-            IPopulation pop = new Population(fFunc,sFunc, cross, mut, 10);
+            IPopulation pop = new Population(fFunc,10);
             log.Create("../../Logs/");
-            //log.setPopulationLog(pop, 1, 100);
+            log.setPopulationLog(pop, 0, 0);
 
             Console.WriteLine("Genome\tFitness");
             for (int i = 0; i < pop.Length; i++)

@@ -26,9 +26,8 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    class IMutation
+    public interface IInitialPopulationMethod
     {
-        protected double rate;
-        abstract IGenome Mutate(IGenome genome);
+        List<IGenome> Generate(int size, IFitnessFunction fitnessFunction);
     }
 }

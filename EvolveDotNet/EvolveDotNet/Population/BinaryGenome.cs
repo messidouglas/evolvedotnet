@@ -34,7 +34,13 @@ namespace EvolveDotNet
         public BinaryGenome(IList<bool> genes)
         {
             this.genes = genes;
-        } 
+        }
+
+        public BinaryGenome(BinaryGenome binaryGenome)
+        {
+            this.genes = binaryGenome.genes;
+            this.fitnessFunction = binaryGenome.fitnessFunction;
+        }
 
         public BinaryGenome(int length)
         {
@@ -119,6 +125,17 @@ namespace EvolveDotNet
         public void SetFitnessFunction(IFitnessFunction fitnessFunction)
         {
             this.fitnessFunction = fitnessFunction;
+        }
+
+        public object Clone()
+        {
+            BinaryGenome novo = new BinaryGenome(genes.Count);
+            for (int i = 0; i < genes.Count; i++)
+                novo[i] = genes[i];
+
+            novo.fitnessFunction = this.fitnessFunction;
+
+            return novo;
         }
     }
 }

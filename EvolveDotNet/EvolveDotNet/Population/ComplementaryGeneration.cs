@@ -26,8 +26,25 @@ using System.Text;
 
 namespace EvolveDotNet
 {
-    public interface IFisrtPopulationMethod
+    public class ComplementaryGeneration : IInitialPopulationMethod
     {
-        IPopulation Generate(int Length);
+        public List<IGenome> Generate(int size, IFitnessFunction fitnessFunction)
+        {
+            List<IGenome> population = new List<IGenome>();
+            FlipGeneMutation flip = new FlipGeneMutation();
+            
+            for (int i = 0; i < size; i+=2)
+            {
+                population.Add(new BinaryGenome(DefaultParameter.genomeSize));
+                population[i].SetFitnessFunction(fitnessFunction);
+
+                IGenome genome = (BinaryGenome)population[i].Clone();
+                flip.Mutate(genome);
+                population.Add(genome);
+                population[i+1].SetFitnessFunction(fitnessFunction);
+            }
+
+            return population;
+        }
     }
 }
