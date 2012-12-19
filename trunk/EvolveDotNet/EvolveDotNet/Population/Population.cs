@@ -107,29 +107,31 @@ namespace EvolveDotNet
             IList<IGenome> newGeneration = new List<IGenome>();
             IList<IGenome> aux;
             this.generation++;
-            int count = 0;
             double avarageFitness = 0;
 
-            do
+            for (int i = 0; i < this.Length; i+=2)
             {
                 aux = this.Crossover(this.selection.Select(this), this.selection.Select(this));
                 mutation.Mutate(aux[0]);
                 mutation.Mutate(aux[1]);
                 newGeneration.Add(aux[0]);
                 newGeneration.Add(aux[1]);
-                count += 2;
-            } while (count < this.Length);
+                newGeneration[i].SetFitnessFunction(fitnessFunction);
+                avarageFitness += newGeneration[i].Evaluate();
+                newGeneration[i+1].SetFitnessFunction(fitnessFunction);
+                avarageFitness += newGeneration[i+1].Evaluate();
+            }
 
             if (newGeneration.Count > this.Length)
             {
                 newGeneration.RemoveAt(this.Length);
             }
 
-            for (int i = 0; i < newGeneration.Count; i++)
+            if (DefaultParameter.elitism)
             {
-                newGeneration[i].SetFitnessFunction(fitnessFunction);
-                avarageFitness += newGeneration[i].Evaluate();
-            }
+                newGeneration[0] = this.getBest();
+            }           
+
             AvarageFitness = avarageFitness / newGeneration.Count;
             
             this.population = newGeneration;
@@ -145,6 +147,23 @@ namespace EvolveDotNet
         public int Length
         {
             get { return this.population.Count; }
+        }
+
+        public IGenome getBest()
+        {            
+            if (this.Length > 0)
+            {
+                IGenome best = this[0];
+                for (int i = 1; i < this.Length; i++)
+                {
+                    if (this[i].Evaluate() > best.Evaluate())
+                        best = this[i];
+                }
+                return best;
+            }
+            else
+                return null;
+
         }
     }
 }
