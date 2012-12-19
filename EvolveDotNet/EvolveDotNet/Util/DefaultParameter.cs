@@ -39,8 +39,12 @@ namespace EvolveDotNet
         public static ISelectionFunction selection = new TournamentSelection();
         public static ICrossoverMethod crossover = new PointCrossover();
         public static IMutationMethod mutation = new RandomMutation();
+        public static bool elitism = true;
 
-        public static StopFunction stopFunction = StopFunction.FINISH;
+        public static StopFunction stopFunction = StopFunction.FINISH | StopFunction.FINISH;
+
+
+
 
     }
 }
