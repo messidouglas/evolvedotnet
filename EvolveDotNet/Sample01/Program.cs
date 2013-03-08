@@ -12,8 +12,8 @@ namespace Sample01
 
         static void Main(string[] args)
         {
-            // população
-            // mutação
+            // population
+            // mutation
             // crossover
             // run
 

@@ -129,13 +129,13 @@ namespace EvolveDotNet
 
         public object Clone()
         {
-            BinaryGenome novo = new BinaryGenome(genes.Count);
+            BinaryGenome newGenome = new BinaryGenome(genes.Count);
             for (int i = 0; i < genes.Count; i++)
-                novo[i] = genes[i];
+                newGenome[i] = genes[i];
 
-            novo.fitnessFunction = this.fitnessFunction;
+            newGenome.fitnessFunction = this.fitnessFunction;
 
-            return novo;
+            return newGenome;
         }
     }
 }
