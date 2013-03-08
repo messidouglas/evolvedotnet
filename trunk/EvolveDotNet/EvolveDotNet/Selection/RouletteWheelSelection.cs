@@ -9,7 +9,7 @@ namespace EvolveDotNet
     {
         public IGenome Select(IPopulation population)
         {
-            IGenome choiced;
+            IGenome chosen;
             double tournament = Helper.Random.NextDouble();
             double aux = 0;
             double sum = 0;
@@ -22,8 +22,8 @@ namespace EvolveDotNet
                 aux += population[i].Evaluate() / sum;
                 if (tournament <= aux)
                 {
-                    choiced = population[i];
-                    return choiced;
+                    chosen = population[i];
+                    return chosen;
                 }
             }
 

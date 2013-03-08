@@ -43,8 +43,10 @@ namespace EvolveDotNet
 
         public static StopFunction stopFunction = StopFunction.FINISH | StopFunction.FINISH;
 
-
-
-
+        // Stop Methods
+        public static bool Objetive = false;
+        public static bool GenerationCount = false;
+        public static bool StabilizeGenerationCount = false;
+        public static bool DivergenceResetHalf = false;
     }
 }
