@@ -26,8 +26,17 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Interface to support implementation of population.
+    /// </summary>
     public interface IInitialPopulationMethod
     {
+        /// <summary>
+        /// Creates a population based in a size
+        /// </summary>
+        /// <param name="size">Number of genomes should be in this population</param>
+        /// <param name="fitnessFunction">Population's fitness function</param>
+        /// <returns></returns>
         List<IGenome> Generate(int size, IFitnessFunction fitnessFunction);
     }
 }

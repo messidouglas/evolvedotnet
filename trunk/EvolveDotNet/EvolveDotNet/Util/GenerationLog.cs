@@ -8,16 +8,18 @@ using System.Data;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Generated Logs of developing of population during the process
+    /// </summary>
     public class GenerationLog
     {
         private static GenerationLog instance = null;
         private String pathLog;
         private XmlTextWriter xtw;
 
-        private GenerationLog() {
-
-        }
-
+        /// <summary>
+        /// Get a unique instance of class
+        /// </summary>
         public static GenerationLog Instance
         {
             get 
@@ -30,6 +32,10 @@ namespace EvolveDotNet
             }
         }
 
+        /// <summary>
+        /// Create the file which record the population's generation
+        /// </summary>
+        /// <param name="path">Path of file's register</param>
         public void Create(String path)
         {
             pathLog = path;
@@ -39,6 +45,12 @@ namespace EvolveDotNet
             xtw.Indentation = 4;
         }
 
+        /// <summary>
+        /// Record each genome of population and some other parameters
+        /// </summary>
+        /// <param name="population">Population to be record</param>
+        /// <param name="generation">Number of generation</param>
+        /// <param name="avarageFitness">Avarage fitness of population</param>
         public void setPopulationLog(IPopulation population, int generation, double avarageFitness)
         {
             xtw.WriteStartElement("Population");
@@ -55,12 +67,20 @@ namespace EvolveDotNet
             xtw.WriteEndElement();
         }
 
+        /// <summary>
+        /// Start the tag of population
+        /// </summary>
+        /// <param name="generation">Number of generation</param>
         public void setStartPopulationLog(int generation)
         {
             xtw.WriteStartElement("Population");
             xtw.WriteAttributeString("Generation", generation.ToString());
         }
 
+        /// <summary>
+        /// Record a unique genome
+        /// </summary>
+        /// <param name="genome">genome to be record</param>
         public void setGenomeLog(IGenome genome)
         {
             xtw.WriteStartElement("Genome");
@@ -69,6 +89,9 @@ namespace EvolveDotNet
             xtw.WriteEndElement();
         }
 
+        /// <summary>
+        /// Finish the tag of population
+        /// </summary>
         public void setFinishPopulationLog()
         {
             xtw.WriteEndElement();

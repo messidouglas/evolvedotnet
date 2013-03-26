@@ -26,8 +26,17 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Class implements the  interface 'IMutationMethod'.
+    /// This kind of Mutation is called of Flip Gene.
+    /// It used to Binary Genomes. It reverses all locus to value opposite.
+    /// </summary>
     public class FlipGeneMutation : IMutationMethod
     {
+        /// <summary>
+        /// Execute Mutation in the genome for reference
+        /// </summary>
+        /// <param name="genome">Genome</param>
         public void Mutate(IGenome genome)
         {
             for (int locus = 0; locus < genome.Length; locus++)

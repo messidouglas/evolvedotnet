@@ -27,6 +27,9 @@ using EvolveDotNet;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Controller class of population's generation
+    /// </summary>
     public class Population : IPopulation
     {
         private IList<IGenome> population;
@@ -143,12 +146,16 @@ namespace EvolveDotNet
         {
             return crossover.Crossover(genome1, genome2);
         }
-
+        
         public int Length
         {
             get { return this.population.Count; }
         }
 
+        /// <summary>
+        /// Get the best genome based in the fitness' value
+        /// </summary>
+        /// <returns>the best genome</returns>
         public IGenome getBest()
         {            
             if (this.Length > 0)

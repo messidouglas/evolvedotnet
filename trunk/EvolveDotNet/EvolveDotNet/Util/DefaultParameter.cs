@@ -31,7 +31,10 @@ namespace EvolveDotNet
         FINISH, 
 
     }
-
+    
+    /// <summary>
+    /// Parameters used to genetic algorithm
+    /// </summary>
     public static class DefaultParameter
     {
         public static int genomeSize = 5;

@@ -26,6 +26,9 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Creates a new population based in the size of population and its Fitness Function
+    /// </summary>
     public class RandomGeneration : IInitialPopulationMethod
     {
         public List<IGenome> Generate(int size, IFitnessFunction fitnessFunction)

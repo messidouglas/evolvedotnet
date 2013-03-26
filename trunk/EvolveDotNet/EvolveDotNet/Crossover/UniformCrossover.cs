@@ -26,21 +26,42 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Class implements the  interface 'ICrossoverMethod'.
+    /// This kind of Crossover is called of Uniform.
+    /// It mixes the two genomes received based in a rate set as a parameter: 'ratePerLocus'.
+    /// All of genes are analized and for each of them a Random number is generated, so 
+    /// according to the rate parameter is decided if this locus will be changed for other 
+    /// corresponding gene between genome1 and genome2 or if this gene remains the same.
+    /// </summary>
     public class UniformCrossover : ICrossoverMethod
     {
         private double ratePerGene;
         private const double RATE_PER_GENE_DEFAULT = 0.5;
 
+        /// <summary>
+        /// Builder set 'ratePerGene' with a Default value
+        /// </summary>
         public UniformCrossover()
         {
             this.ratePerGene = RATE_PER_GENE_DEFAULT;
         }
 
+        /// <summary>
+        /// Builder set 'ratePerGene' with a parameter passed by the user
+        /// </summary>
+        /// <param name="ratePerGene">Likely to happen Crossover</param>
         public UniformCrossover(double ratePerGene)
         {
             this.ratePerGene = ratePerGene;
         }
-        
+
+        /// <summary>
+        /// Execute crossover between two genomes and return other two genomes mixed
+        /// </summary>
+        /// <param name="genome1">Genome</param>
+        /// <param name="genome2">Genome</param>
+        /// <returns>Two new genomes, that are a mixture of genome1 and genome2</returns>
         public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)
         {
             IList<bool> offspring1 = new List<bool>();

@@ -26,8 +26,18 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// This a kind of Selection called of Tournament.
+    /// It chooses two genomes at random and compare between them which has a
+    /// better evaluate through the Fitness Function
+    /// </summary>
     public class TournamentSelection : ISelectionFunction
     {
+        /// <summary>
+        /// Select one genome of population
+        /// </summary>
+        /// <param name="population">Population with genomes</param>
+        /// <returns>The genome chosen</returns>
         public IGenome Select(IPopulation population)
         {
             int genome1 = Helper.Random.Next(0, population.Length);

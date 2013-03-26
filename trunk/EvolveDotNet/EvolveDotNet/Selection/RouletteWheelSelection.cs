@@ -5,8 +5,17 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// This a kind of Selection called of Roulette Wheel.
+    /// It chooses a genome at random using the Fitness function as a weight of choice
+    /// </summary>
     class RouletteWheelSelection : ISelectionFunction
     {
+        /// <summary>
+        /// Select one genome of population
+        /// </summary>
+        /// <param name="population">Population with genomes</param>
+        /// <returns>The genome chosen</returns>
         public IGenome Select(IPopulation population)
         {
             IGenome chosen;

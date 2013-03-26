@@ -26,12 +26,38 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Interface to support implementation of several kind of genomes
+    /// </summary>
+    /// <example>Genome encoded in binary</example>
     public interface IGenome : IComparable<IGenome>, ICloneable
     {
+        /// <summary>
+        /// Length of genome
+        /// </summary>
         int Length { get; }
+
+        /// <summary>
+        /// Access each locus of genome
+        /// </summary>
+        /// <param name="locus">Lower part of genome</param>
+        /// <returns>Value this position</returns>
         bool this[int locus] { get; set; }
+
+        /// <summary>
+        /// Compare if the Fitness this genome is equal, smaller or larger than Fitness other genome
+        /// </summary>
+        /// <param name="other">Genome that want to compare with this</param>
         int CompareTo(IGenome other);
+
+        /// <summary>
+        /// Calculates the Fitness this genome
+        /// </summary>
         double Evaluate();
+
+        /// <summary>
+        /// Compare if the value this genome is equal to vaule other genome
+        /// </summary>
         void SetFitnessFunction(IFitnessFunction fitnessFunction);
     }
 }

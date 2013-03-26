@@ -26,11 +26,35 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Interface to support implementation of populations
+    /// </summary>
     public interface IPopulation
     {
+        /// <summary>
+        /// Access each genome of population
+        /// </summary>
+        /// <param name="genome">index of genome in the population</param>
+        /// <returns>the genome with the corresponding index</returns>
         IGenome this[int genome] { get; set; }
+
+        /// <summary>
+        /// Creates a new generation based in set parameters, and so it replace the old
+        /// generation.
+        /// </summary>
         void NextGeneration();
+        
+        /// <summary>
+        /// Do the crossover according to the type set
+        /// </summary>
+        /// <param name="genome1">genome 1</param>
+        /// <param name="genome2">genome 2</param>
+        /// <returns>Two new genomes after the crossover</returns>
         IList<IGenome> Crossover(IGenome genome1, IGenome genome2);
+
+        /// <summary>
+        /// Return the size of population
+        /// </summary>
         int Length { get; }
     }
 }

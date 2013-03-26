@@ -26,10 +26,21 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Class implements the  interface 'ICrossoverMethod'.
+    /// This kind of Crossover is called of Several Points.
+    /// It mixes the two genomes received based in specific points set as a parameter: 'positions'. 
+    /// The intervals between the points are changed alternating between genenome1 and genome2
+    /// </summary>
     public class PointCrossover : ICrossoverMethod
     {
         private List<int> positions;
 
+        /// <summary>
+        /// Builder create a list of positions where the cut should be done to execute the
+        /// crossover
+        /// </summary>
+        /// <param name="positions">Cutting positions of genome</param>
         public PointCrossover(params int[] positions)
         {
             this.positions = new List<int>();
@@ -41,6 +52,12 @@ namespace EvolveDotNet
             this.positions.Sort();
         }
 
+        /// <summary>
+        /// Execute crossover between two genomes and return other two genomes mixed
+        /// </summary>
+        /// <param name="genome1">Genome</param>
+        /// <param name="genome2">Genome</param>
+        /// <returns>Two new genomes, that are a mixture of genome1 and genome2</returns>
         public IList<IGenome> Crossover(IGenome genome1, IGenome genome2)
         {
             this.positions.Add(genome1.Length);

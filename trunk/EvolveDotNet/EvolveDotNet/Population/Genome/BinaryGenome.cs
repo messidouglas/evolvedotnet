@@ -31,17 +31,29 @@ namespace EvolveDotNet
         private IList<bool> genes;
         private IFitnessFunction fitnessFunction;
 
+        /// <summary>
+        /// Builder a new genome from a list of genes
+        /// </summary>
+        /// <param name="genes">List of genes which forms a Genome</param>
         public BinaryGenome(IList<bool> genes)
         {
             this.genes = genes;
         }
 
+        /// <summary>
+        /// Builder a new genome from other Binary Genome
+        /// </summary>
+        /// <param name="binaryGenome">Binary Genome</param>
         public BinaryGenome(BinaryGenome binaryGenome)
         {
             this.genes = binaryGenome.genes;
             this.fitnessFunction = binaryGenome.fitnessFunction;
         }
 
+        /// <summary>
+        /// Builder a new genome from length of Genome
+        /// </summary>
+        /// <param name="length">Amount of locus of Genome</param>
         public BinaryGenome(int length)
         {
             genes = new List<bool>();
@@ -62,25 +74,24 @@ namespace EvolveDotNet
             get { return this.genes.Count; }
         }
 
+        /// <summary>
+        /// Compare if the value this genome is equal to other genome
+        /// </summary>
+        /// <param name="obj">The genome to compare with this</param>
+        /// <returns>if the genomes are equal or not</returns>
         public override bool Equals(object obj)
         {
-            // If parameter is null return false.
             if (obj == null)
                 return false;
 
-            // If parameter cannot be cast to Point return false.
             BinaryGenome genome = obj as BinaryGenome;
             if ((System.Object)genome == null)
                 return false;
 
-            // Return false if the fields not match:
             for (int locus = 0; locus != genes.Count; locus++)
-            {
                 if (genes[locus] != genome.genes[locus])
                     return false;
-            }
 
-            // Return true
             return true;
         }
 
@@ -93,6 +104,10 @@ namespace EvolveDotNet
             return hash;
         }
 
+        /// <summary>
+        /// Print the values of each locus of genome
+        /// </summary>
+        /// <returns>Values of genome in a string</returns>
         public override string ToString()
         {
             StringBuilder output = new StringBuilder(genes.Count);
@@ -117,16 +132,28 @@ namespace EvolveDotNet
                 return 0;
         }
 
+        /// <summary>
+        /// Calculates the Fitness this genome based in the FitnessFunction implements
+        /// </summary>
+        /// <returns>Value of the Fitness Genome</returns>
         public double Evaluate()
         {
             return fitnessFunction.Evaluate(this);
         }
 
+        /// <summary>
+        /// Set Fitness Function in the Genome
+        /// </summary>
+        /// <param name="fitnessFunction">Class Implements in the Code of user</param>
         public void SetFitnessFunction(IFitnessFunction fitnessFunction)
         {
             this.fitnessFunction = fitnessFunction;
         }
 
+        /// <summary>
+        /// Create a identical Genome with other memory address
+        /// </summary>
+        /// <returns>A copy of genome passed in the parameters</returns>
         public object Clone()
         {
             BinaryGenome newGenome = new BinaryGenome(genes.Count);
