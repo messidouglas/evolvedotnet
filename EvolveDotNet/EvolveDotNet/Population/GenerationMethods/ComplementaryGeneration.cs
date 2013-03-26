@@ -26,6 +26,9 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Creates a population with half of genomes exactly reverse each other
+    /// </summary>
     public class ComplementaryGeneration : IInitialPopulationMethod
     {
         public List<IGenome> Generate(int size, IFitnessFunction fitnessFunction)

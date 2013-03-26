@@ -26,20 +26,46 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Class implements the  interface 'IMutationMethod'.
+    /// This kind of Mutation is called of Uniform.
+    /// It change the value of gene for a random gene value based in a rate set as a 
+    /// parameter: 'ratePerGene'.
+    /// All of genes are analized and for each of them a Random number is generated, so 
+    /// according to the rate parameter is decided if this bit will be changed for other 
+    /// value or if remains the same.
+    /// </summary>
     public class UniformMutation : IMutationMethod
     {
-        public double RatePerBit { get; set; }
+        public double RatePerGene { get; set; }
+        private const double RATE_PER_GENE_DEFAULT = 0.5;
 
-        public UniformMutation(double ratePerBit)
+        /// <summary>
+        /// Builder set 'ratePerGene' with a Default value
+        /// </summary>
+        public UniformMutation()
         {
-            this.RatePerBit = ratePerBit;
+            this.RatePerGene = RATE_PER_GENE_DEFAULT;
         }
 
+        /// <summary>
+        /// Builder set 'ratePerGene' with a parameter passed by the user
+        /// </summary>
+        /// <param name="ratePerGene">Likely to happen Mutation</param>
+        public UniformMutation(double ratePerGene)
+        {
+            this.RatePerGene = ratePerGene;
+        }
+
+        /// <summary>
+        /// Execute Mutation in the genome for reference with based in the rate
+        /// </summary>
+        /// <param name="genome">Genome</param>
         public void Mutate(IGenome genome)
         {
             for(int locus = 0; locus < genome.Length; locus++)
             {                
-                if (Helper.Random.NextDouble() < RatePerBit)
+                if (Helper.Random.NextDouble() < RatePerGene)
                     genome[locus] = !genome[locus];
             }
         }

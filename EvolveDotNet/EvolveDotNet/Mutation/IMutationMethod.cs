@@ -26,6 +26,10 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Interface to support implementation of several Mutation Methods.
+    /// </summary>
+    /// <example>FlipGeneMutation.cs, RandomMutation.cs and UniformMutation</example>
     public interface IMutationMethod
     {
         void Mutate(IGenome genome);

@@ -26,8 +26,18 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Interface to support implementation of several Crossover Methods.
+    /// </summary>
+    /// <example>PointCrossover.cs and UniformCrossover.cs</example>
     public interface ICrossoverMethod
     {
+        /// <summary>
+        /// Execute crossover between two genomes and return other two genomes mixed
+        /// </summary>
+        /// <param name="genome1">Genome</param>
+        /// <param name="genome2">Genome</param>
+        /// <returns>Two new genomes, that are a mixture of genome1 and genome2</returns>
         IList<IGenome> Crossover(IGenome genome1, IGenome genome2);
     }
 }

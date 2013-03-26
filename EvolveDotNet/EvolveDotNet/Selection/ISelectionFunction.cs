@@ -26,8 +26,16 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Interface to support implementation of several selection Methods.
+    /// </summary>
     public interface ISelectionFunction
     {
+        /// <summary>
+        /// Select a genome of population
+        /// </summary>
+        /// <param name="population">population which want to select a genome</param>
+        /// <returns>the genome selected</returns>
         IGenome Select(IPopulation population);
     }
 }

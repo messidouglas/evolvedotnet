@@ -26,23 +26,41 @@ using System.Text;
 
 namespace EvolveDotNet
 {
+    /// <summary>
+    /// Class implements the interface 'IMutationMethod'.
+    /// This kind of Mutation is called of Random.
+    /// Using the parameter 'RateMutation' is decided if should happen a mutation or not.
+    /// If true, so is chosen a random gene to change its value.
+    /// </summary>
     public class RandomMutation : IMutationMethod
     {
-        public double RatePerBit { get; set; }
+        public double RateMutation { get; set; }
+        private const double RATE_MUTATION_DEFAULT = 0.1;
 
+        /// <summary>
+        /// Builder set 'RateMutation' with a Default value
+        /// </summary>
         public RandomMutation()
         {
-            this.RatePerBit = 0.1;
+            this.RateMutation = RATE_MUTATION_DEFAULT;
         }
 
-        public RandomMutation(double ratePerBit)
+        /// <summary>
+        /// Builder set 'ratePerGene' with a parameter passed by the user
+        /// </summary>
+        /// <param name="RateMutation">Likely to happen Mutation</param>
+        public RandomMutation(double RateMutation)
         {
-            this.RatePerBit = ratePerBit;
+            this.RateMutation = RateMutation;
         }
 
+        /// <summary>
+        /// Execute Mutation in the genome for reference with based in the rate
+        /// </summary>
+        /// <param name="genome">Genome</param>
         public void Mutate(IGenome genome)
         {
-            if (Helper.Random.NextDouble() < RatePerBit)
+            if (Helper.Random.NextDouble() < RateMutation)
             {
                 int locus = Helper.Random.Next(genome.Length);
                 genome[locus] = !genome[locus];
